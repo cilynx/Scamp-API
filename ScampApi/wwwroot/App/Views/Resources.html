@@ -3,7 +3,10 @@
     <p>{{loadingMessage}}</p>
     <div class="row">
         <div class="col-lg-8">
+
+
             <div class="widget">
+                <p>This table shows on the User detail view as well as the Group detail view</p>
                 <div class="widget-header">
                     <i class="fa fa-tasks"></i> Resources <span class="pull-right">Manage</span>
                 </div>
@@ -21,7 +24,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-ng-repeat="item in resources">
+                                <!-- <tr data-ng-repeat="item in resources"> -->
+                                <tr>
                                     <td class="text-center">{{item.id}}</td>
                                     <td>
                                         <div class="btn-group">
@@ -51,6 +55,164 @@
                     </div>
                 </div>
             </div>
+
+
+            <p />
+            <div class="widget">
+                <p>This table shows on the Group detail view</p>
+                <div class="widget-header">
+                    <i class="fa fa-tasks"></i> Group Members
+                </div>
+                <div class="widget-body no-padding">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID <i class="fa fa-caret-down"></i></th>
+                                    <th>Name</th>
+                                    <th>Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr data-ng-repeat="user in members"> -->
+                                <tr>
+                                    <!-- Angular may have better sugar for this? -->
+                                    <td><a href="#/users/{{user.id}}">{{user.email}}</a></td>
+                                    <td>{{user.name}}</td>
+                                    <td class="resource">
+                                        <div class="progress">
+                                            <!-- progressBarType would be 'progress-bar-warning' for say 90% utilization, 'progress-bar-danger' for 100% utilization and '' for anything else -->
+                                            <div class="progress-bar {{resource.progressBarType}}" role="progressbar" ng-attr-style="{{resource.remainingBarStyle}}" ng-attr-aria-valuenow="{{resource.remaining}}" aria-valuemin="0" aria-valuemax="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/users/{{user.id}}">david@zbrad.com</a></td>
+                                    <td>David Makogon</td>
+                                    <td class="resource">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 50%">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/users/{{user.id}}">shawn@zbrad.com</a></td>
+                                    <td>Shawn Cicoria</td>
+                                    <td class="resource">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 100%">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/users/{{user.id}}">felix@zbrad.com</a></td>
+                                    <td>Felix Rieseberg</td>
+                                    <td class="resource">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" style="width: 95%">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- I don't know anything about Angular, so this could be totally wrong... -->
+                                    <td><input type="text" class="form-control" ng-model="newGroupMemberId"></td>
+                                    <td><button type="button" class="btn btn-default">Add from Directory</button></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <p />
+            <div class="widget">
+                <p>This table shows on the Group detail view</p>
+                <div class="widget-header">
+                    <i class="fa fa-tasks"></i> Group Templates
+                    <span class="pull-right">
+                        <div class="btn-group">
+                            <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" ref="#">
+                                Manage <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Add Template</a></li>
+                                <li><a href="#">Other stuff here?</a></li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+                <div class="widget-body no-padding">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name <i class="fa fa-caret-down"></i></th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr data-ng-repeat="template in templates"> -->
+                                <tr>
+                                    <td><a href="#/templates/{{template.id}}">{{template.name}}</a></td>
+                                    <td>{{template.description}}</td>                                  
+                                </tr>
+                                <tr>
+                                    <td><a href="#">PhET with LLNL</a></td>
+                                    <td>This template includes an Azure Website running the PhET simulation frontend and two G-Series workers pre-configured to support PhET using CRY, RadSrc, or Fission from LLNL.</td>
+                                </tr>                             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <p />
+            <div class="widget">
+                <p>This table shows on the Group Administrator view</p>
+                <div class="widget-header">
+                    <i class="fa fa-tasks"></i> Groups
+                </div>
+                <div class="widget-body no-padding">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name <i class="fa fa-caret-down"></i></th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr data-ng-repeat="group in groups"> -->
+                                <tr>
+                                    <td><a href="#/groups/{{group.id}}">{{group.name}}</a></td>
+                                    <td>{{group.description}}</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">Physics 101-001</a></td>
+                                    <td>Physics 101 -- Lecture 8-9 MWF, Lab 8-12 TR</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">Physics 101-002</a></td>
+                                    <td>Physics 101 -- Lecture 12-1 MWF, Lab 12-4 TR</td>
+                                </tr>
+                                <tr>
+                                    <!-- I don't know anything about Angular, so this could be totally wrong... -->
+                                    <td><input type="text" class="form-control" ng-model="newTemplateName"></td>
+                                    <td><input type="text" class="form-control" ng-model="newTemplateDesc"></td>
+                                    <td><button type="button" class="btn btn-default">Add</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
         <div class="col-lg-4">
@@ -74,7 +236,7 @@
                         <div class="input-group">
                             <span class="input-group-addon">Group</span>
                             {{
-view "select"
+                            view "select"
                             class="form-control"
                             content=groupsLookup
                             selection=rGroup
