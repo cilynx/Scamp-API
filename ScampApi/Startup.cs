@@ -9,6 +9,7 @@ using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using ScampApi.Infrastructure;
+using Microsoft.AspNet.StaticFiles;
 
 namespace ScampApi
 {
@@ -19,7 +20,8 @@ namespace ScampApi
             // Setup configuration sources.
             Configuration = new Configuration()
                 .AddJsonFile("config.json")
-                .AddEnvironmentVariables();
+                .AddEnvironmentVariables("APPSETTING_");
+
         }
 
         public IConfiguration Configuration { get; set; }
@@ -45,7 +47,14 @@ namespace ScampApi
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseStaticFiles();
+
+            app.UseOAuthBearerAuthentication(options =>
+            {
+                options.Audience = Configuration.Get("ClientId");
+                options.Authority = String.Format(Configuration.Get("AadInstance"), Configuration.Get("TenantId"));
+            });
+
+            //app.UseStaticFiles();
             // Add MVC to the request pipeline.
             app.UseMvc(routes =>
             {

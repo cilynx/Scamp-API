@@ -20,12 +20,21 @@ angular.module('scamp', ['ngRoute','AdalAngular'])
         templateUrl: "/App/Views/Settings.html",
     }).otherwise({ redirectTo: "/Home" });
 
+
+    if (scampConfig.settings.clientId === null)
+        console.error("Missing $env:APPSETTING_ClientId");
+    if (scampConfig.settings.tenantId === null)
+        console.error("Missing $env:APPSETTING_TenantId");
+
+    
+
     adalProvider.init(
         {
-            tenant: 'dpe1.onmicrosoft.com',
-            clientId: '5480d52a-a26b-47f5-a0a7-c4838f543f7e',
-            extraQueryParameter: 'nux=1',
-            cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
+            tenant: scampConfig.settings.tenantId,
+            clientId: scampConfig.settings.clientId,
+            extraQueryParameter: scampConfig.settings.extraQueryParameter,
+            cacheLocation: scampConfig.settings.cacheLocation,
+            redirectUri: scampConfig.settings.redirectUri
         },
         $httpProvider
         );

@@ -1,3 +1,4 @@
 ﻿{
-    "ApiRootUrl": "http://localhost:10838"
+    "ApiRootUrl": "https://localhost:44300",
+    "AadInstance": "https://login.windows.net/{0}"
 }

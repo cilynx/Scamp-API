@@ -37,8 +37,12 @@ namespace ScampApi.Infrastructure
         {
             return FullyQualify(_urlHelper.RouteUrl("GroupUsers.GetSingle", new { groupId , userId }));
         }
+        public string GroupResourceUser(int groupId, int resourceId, int userId)
+        {
+            return FullyQualify(_urlHelper.RouteUrl("GroupResourceUsers.GetSingle", new { groupId, resourceId , userId }));
+        }
 
-        public string User()
+        public string CurrentUser()
         {
             return FullyQualify(_urlHelper.RouteUrl("User.CurrentUser"));
         }
@@ -46,7 +50,7 @@ namespace ScampApi.Infrastructure
         {
             return FullyQualify(_urlHelper.RouteUrl("Users.GetAll"));
         }
-        public string Users(int userId)
+        public string User(int userId)
         {
             return FullyQualify(_urlHelper.RouteUrl("Users.GetSingle", new {  userId }));
         }

@@ -23,16 +23,18 @@ namespace ScampApi.Controllers.Controllers
         {
             return new[] {
                 new UserSummary {
-                    Id =1,
+                    UserId =1,
                     Name = "User1",
-                    UserUrl = _linkHelper.Users(1)
-
+                    Links = {
+                         new Link {Rel="user", Href= _linkHelper.User(1) }
+                    }
                 },
                  new UserSummary {
-                    Id =2,
+                    UserId =2,
                     Name = "User2",
-                    UserUrl = _linkHelper.Users(2)
-
+                    Links = {
+                         new Link {Rel="user", Href= _linkHelper.User(2) }
+                    }
                 }
             };
         }
@@ -46,8 +48,8 @@ namespace ScampApi.Controllers.Controllers
             {
                 Id = 1,
                 Name = "User1",
-                Groups = new[] { new GroupSummary { GroupId = 1, Name = "Group1", GroupUrl = _linkHelper.Group(groupId: 1) } },
-                Resources = new[] { new GroupResourceSummary { GroupId = 1, ResourceId = 1, Name = "GroupResource1", GroupResourceUrl = _linkHelper.GroupResource(groupId: 1, resourceId: 1) } }
+                Groups = new[] { new GroupSummary { GroupId = 1, Name = "Group1", Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: 1) } } } },
+                Resources = new[] { new GroupResourceSummary { GroupId = 1, ResourceId = 1, Name = "GroupResource1", Links = { new Link { Rel = "groupResource", Href = _linkHelper.GroupResource(groupId: 1, resourceId: 1) } } } }
             };
         }
 

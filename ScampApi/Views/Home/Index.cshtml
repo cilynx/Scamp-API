@@ -1,10 +1,114 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    Welcome to your ASP.NET 5 Web API app! Click <a href="api/Values"> here</a> to access the Web API api/values
-</body>
-</html>
+﻿@model  ScampApi.ViewModels.ScampSettings
+
+@{
+    var serSettings = new Newtonsoft.Json.JsonSerializerSettings {
+        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
+    };
+    var settingsJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model, serSettings);
+}
+
+@section  head{
+
+}
+
+<div ng-app="scamp" ng-controller="homeCtrl" role="document">
+    <!--sidebar-->
+    <div id="page-wrapper" class="open">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar">
+                <li class="sidebar-main">
+                    <a {{action "toggleSidebar" target=view}}>
+                        Scamp
+                        <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                    </a>
+                </li>
+                <li class="sidebar-title"><span>NAVIGATION</span></li>
+                <li class="sidebar-list">
+                    <a href="#/dashboard">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+                </li>
+                <li class="sidebar-list">
+                    <a href="#/resources">Resources <span class="menu-icon fa fa-cloud"></span></a>
+                </li>
+                <li class="sidebar-list">
+                    <a href="#/logs">Logs <span class="menu-icon fa fa-list"></span></a>
+                </li>
+                <li class="sidebar-list">
+                    <a href="#/settings">Settings <span class="menu-icon fa fa-cog"></span></a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="col-xs-4">
+                    <a href="https://github.com/felixrieseberg/ScampFrontend" target="_blank">
+                        Github
+                    </a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="http://www.felixrieseberg.com" target="_blank">
+                        About
+                    </a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="#">
+                        Support
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content-wrapper" role="main">
+            <!--header-->
+            <div class="row header">
+                <div class="col-xs-12">
+                    <div class="user pull-right">
+                        <div class="item dropdown">
+                            <a data-toggle="collapse" data-target=".navbar-collapse" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                                <img src="http://placekitten.com/g/40/40">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <div class="page">
+                            {{currentRouteName}}
+                        </div>
+                        <div class="breadcrumb-links">
+                            {{sc-breadcrumb}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-view class="page-content">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script>
+        var scampConfig = scampConfig || {};
+        scampConfig.settings = @Html.Raw(settingsJson);
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/adal.js"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/adal-angular.js"></script>
+
+    <script src="~/app/scripts/app.js"></script>
+
+
+    <script src="~/app/scripts/homectrl.js"></script>
+    <script src="~/app/scripts/userdatactrl.js"></script>
+    <script src="~/app/scripts/todolistctrl.js"></script>
+    <script src="~/app/scripts/todolistsvc.js"></script>
+    <script src="~/app/scripts/resourcesctrl.js"></script>
+    <script src="~/app/scripts/resourcessvc.js"></script>
+
+    <!--<script src="/App/Scripts/vendor.js"></script>-->
+    <!--<script src="/App/Scripts/scamp.js"></script>-->
+}

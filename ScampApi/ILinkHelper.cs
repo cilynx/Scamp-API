@@ -7,8 +7,9 @@
         string GroupResource(int groupId, int resourceId);
         string GroupTemplate(int groupId, int templateId);
         string GroupUser(int groupId, int userId);
-        string User();
+        string CurrentUser();
         string Users();
-        string Users(int userId);
+        string User(int userId);
+        string GroupResourceUser(int groupId, int resourceId, int userId);
     }
 }

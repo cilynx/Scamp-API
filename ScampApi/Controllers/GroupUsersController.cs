@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
+using ScampApi.Infrastructure;
 using ScampApi.ViewModels;
 
 namespace ScampApi.Controllers
@@ -8,32 +9,45 @@ namespace ScampApi.Controllers
     [Route("api/groups/{groupId}/users")]
     public class GroupUsersController : Controller
     {
-        [HttpGet]
-        public IEnumerable<GroupUserSummary> Get(int groupId)
+        private ILinkHelper _linkHelper;
+
+        public GroupUsersController(ILinkHelper linkHelper)
         {
-            return new[] {
-                new GroupUserSummary { GroupId = groupId, UserId = 1, Name = "GroupUser1" },
-                new GroupUserSummary { GroupId = groupId, UserId = 2, Name = "GroupUser2" },
+            _linkHelper = linkHelper;
+        }
+        [HttpGet]
+        public IEnumerable<UserSummary> Get(int groupId)
+        {
+            return new[]
+                {
+                    new UserSummary { UserId = 1, Name = "User1", Links =
+                        {
+                            new Link {Rel="user", Href = _linkHelper.User(userId: 1) } ,
+                            new Link {Rel="groupUser", Href = _linkHelper.GroupUser(groupId: groupId, userId: 1) }
+                        }
+                    }
                 };
         }
 
         [HttpGet("{userId}", Name="GroupUsers.GetSingle")]
-        public GroupUser Get(int groupId, int userId)
+        public UserSummary Get(int groupId, int userId)
         {
-            return new GroupUser { GroupId = groupId, UserId = userId, Name = "GroupUser" + userId };
+            return new UserSummary
+            {
+                UserId = userId,
+                Name = "User" + userId,
+                Links =
+                        {
+                            new Link {Rel="user", Href = _linkHelper.User(userId: userId) } ,
+                            new Link {Rel="groupUser", Href = _linkHelper.GroupUser(groupId: groupId, userId: userId) }
+                        }
+            };
         }
 
         [HttpPost]
-        public void Post([FromBody]GroupUser groupResource)
+        public void Post(int groupId, [FromBody]int userId)
         {
             // TODO implement adding a user to a group
-            throw new NotImplementedException();
-        }
-
-        [HttpPut("{userId}")]
-        public void Put(int groupId, int userId, [FromBody]GroupUser value)
-        {
-            // TODO implement updating a group user
             throw new NotImplementedException();
         }
 

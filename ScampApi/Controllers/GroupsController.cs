@@ -20,8 +20,8 @@ namespace ScampApi.Controllers
         public IEnumerable<GroupSummary> Get()
         {
             return new[] {
-                new GroupSummary { GroupId = 1, Name = "Group1", GroupUrl = _linkHelper.Group(groupId: 1) },
-                new GroupSummary { GroupId = 2, Name = "Group2", GroupUrl = _linkHelper.Group(groupId: 2) },
+                new GroupSummary { GroupId = 1, Name = "Group1", Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: 1) } } },
+                new GroupSummary { GroupId = 2, Name = "Group2", Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: 2) } } },
                 };
         }
 
@@ -34,15 +34,20 @@ namespace ScampApi.Controllers
                 Name = "Group" + groupId,
                 Resources = new[]
                 {
-                    new GroupResourceSummary { GroupId = groupId, ResourceId = 1, Name = "GroupResource1", GroupResourceUrl = _linkHelper.GroupResource(groupId: groupId, resourceId: 1) }
+                    new GroupResourceSummary { GroupId = groupId, ResourceId = 1, Name = "GroupResource1", Links = { new Link { Rel = "groupResource", Href =  _linkHelper.GroupResource(groupId: groupId, resourceId: 1) } } }
                 },
-                Templates= new[]
+                Templates = new[]
                 {
-                    new GroupTemplateSummary { GroupId = groupId, TemplateId = 1, Name = "GroupTemplate1", GroupTemplateUrl = _linkHelper.GroupTemplate(groupId: groupId, templateId: 1) }
+                    new GroupTemplateSummary { GroupId = groupId, TemplateId = 1, Name = "GroupTemplate1", Links = { new Link { Rel = "groupTemplate", Href  = _linkHelper.GroupTemplate(groupId: groupId, templateId: 1) } } }
                 },
                 Users = new[]
                 {
-                    new GroupUserSummary { GroupId = groupId, UserId = 1, Name = "User1", GroupUserUrl = _linkHelper.GroupUser(groupId: groupId, userId: 1) }
+                    new UserSummary { UserId = 1, Name = "User1", Links =
+                        {
+                            new Link {Rel="user", Href = _linkHelper.User(userId: 1) } ,
+                            new Link {Rel="groupUser", Href = _linkHelper.GroupUser(groupId: groupId, userId: 1) }
+                        }
+                    }
                 }
             };
         }

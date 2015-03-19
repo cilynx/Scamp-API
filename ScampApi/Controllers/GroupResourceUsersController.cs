@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
+using ScampApi.Infrastructure;
 using ScampApi.ViewModels;
 
 namespace ScampApi.Controllers
@@ -8,22 +9,43 @@ namespace ScampApi.Controllers
     [Route("api/groups/{groupId}/resources/{resourceId}/users")]
     public class GroupResourceUsersController : Controller
     {
-        [HttpGet]
-        public IEnumerable<GroupResourceUser> GetAll(int groupId, int resourceId)
+        private ILinkHelper _linkHelper;
+
+        public GroupResourceUsersController(ILinkHelper linkHelper)
         {
-            return new[] {
-                new GroupResourceUser { GroupId = groupId, ResourceId = resourceId, UserId = 1 },
-                new GroupResourceUser { GroupId = groupId, ResourceId = resourceId, UserId = 2 },
+            _linkHelper = linkHelper;
+        }
+
+        [HttpGet]
+        public IEnumerable<UserSummary> GetAll(int groupId, int resourceId)
+        {
+            return new[]
+                {
+                    new UserSummary { UserId = 1, Name = "User1", Links =
+                        {
+                            new Link {Rel="user", Href = _linkHelper.User(userId: 1) } ,
+                            new Link {Rel="groupResourceUser", Href = _linkHelper.GroupResourceUser(groupId: groupId, resourceId:resourceId, userId: 1) }
+                        }
+                    }
                 };
         }
-        [HttpGet(Name ="GroupResourceUsers.GetSingle")]
-        public GroupResourceUser Get(int groupId, int resourceId, int userId)
+        [HttpGet("{userId}", Name = "GroupResourceUsers.GetSingle")]
+        public UserSummary Get(int groupId, int resourceId, int userId)
         {
-            return new GroupResourceUser { GroupId = groupId, ResourceId = resourceId, UserId = userId };
+            return new UserSummary
+            {
+                UserId = 1,
+                Name = "User1",
+                Links =
+                        {
+                            new Link {Rel="user", Href = _linkHelper.User(userId: userId) } ,
+                            new Link {Rel="groupResourceUser", Href = _linkHelper.GroupResourceUser(groupId: groupId, resourceId:resourceId, userId: userId) }
+                        }
+            };
         }
 
         [HttpPost]
-        public void Post([FromBody]GroupResourceUser groupResourceUser)
+        public void Post(int groupId, int resourceId, [FromBody]int userId)
         {
             // TODO implement adding a user to a group resource
             throw new NotImplementedException();

@@ -8,6 +8,6 @@ namespace ScampApi.ViewModels
         public string Name { get; set; }
         public IEnumerable<GroupResourceSummary> Resources { get; set; }
         public IEnumerable<GroupTemplateSummary> Templates { get; set; }
-        public IEnumerable<GroupUserSummary> Users { get; set; }
+        public IEnumerable<UserSummary> Users { get; set; }
     }
 }
