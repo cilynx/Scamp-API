@@ -59,9 +59,11 @@ By default, applications provisioned in Azure AD are not enabled to use the OAut
             "environmentVariables": {
                 "APPSETTING_ClientId": "<clientId-from above App in AAD>",
                 "APPSETTING_TenantId": "<tenantId-from above App in AAD->",
-                "APPSETTING_RedirectUri": "https://localhost:44300/"
+                "APPSETTING_RedirectUri": "https://localhost:44300/",
+                "APPSETTING_DocDb:endpoint": "< URL from https://portal.azure.com >",
                 "APPSETTING_DocDb:databaseName": "scamp",
-                "APPSETTING_DocDb:collectionName": "scampdata"
+                "APPSETTING_DocDb:collectionName": "scampdata",
+                "APPSETTING_StorageConnectionString": "<storage connection string>"
             }
         }
     ]
@@ -92,10 +94,11 @@ In your Package Manager Console, before you debug - add $env variabiels.
 
     PM> $env:APPSETTING_TenantId = "foo"
     PM> $env:APPSETTING_ClientId = "bar"
-    PM> $env:AppSETTING_DocDb:endpoint = "<url here>"
-    PM> $env:AppSETTING_DocDb:authkey = "<key here>"
-    PM> $env:AppSETTING_DocDb:databaseName = "<db name here, e.g. scamp>"
-    PM> $env:AppSETTING_DocDb:collectionName = "<collection name>"
+    PM> $env:APPSETTING_DocDb:endpoint = "<url here>"
+    PM> $env:APPSETTING_DocDb:authkey = "<key here>"
+    PM> $env:APPSETTING_DocDb:databaseName = "<db name here, e.g. scamp>"
+    PM> $env:APPSETTING_DocDb:collectionName = "<collection name>"
+    PM> $env:APPSETTING_StorageConnectionString = "<azure storage account connection string>"
 
 Or, these can be set also from Project Properties -> Debug -> Environment Variables to set.
 This format is used as this is what AZW uses for Environment variables. 
@@ -108,6 +111,7 @@ APPSETTING_DocDb:endpoint
 APPSETTING_DocDb:authkey
 APPSETTING_DocDb:databaseName
 APPSETTING_DocDb:collectionName
+APPSETTING_StorageConnectionString
 ````
 
 ### Settings For Site ###
@@ -117,6 +121,11 @@ APPSETTING_DocDb:collectionName
 - **DocDB:authkey** this is the DocumentDB key that comes from the [Azure Preview Portal](https://portal.azure.com)
 - **DocDb:databaseName** this is '**scamp**' by default the Scamp code will create this if it doesn't exist already
 - **DocDb:collectionName** this is '**scampdata**' by default the Scamp code will create this if it doesn't exist already.
+- **StorageConnectionString** this is an Azure Storage Account connection string in the format of:
+
+```
+"DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"
+```
 
 #### Sample Data Generation ####
 
