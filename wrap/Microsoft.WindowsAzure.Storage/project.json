@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45": {
+      "bin": {
+        "assembly": "../../packages/WindowsAzure.Storage.4.2.1/lib/net40/Microsoft.WindowsAzure.Storage.dll"
+      }
+    }
+  }
+}

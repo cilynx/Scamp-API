@@ -11,4 +11,8 @@ angular.module('scamp')
     $scope.isActive = function (viewLocation) {        
         return viewLocation === $location.path();
     };
+
+
+    $scope.isLoggedOn = adalService.userInfo.isAuthenticated;
+
 }]);

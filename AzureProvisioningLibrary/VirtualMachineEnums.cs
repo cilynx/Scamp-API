@@ -8,5 +8,5 @@ namespace AzureProvisioningLibrary
 {
     
     public enum VirtualMachineAction {Stop=0, Start = 1};
-    public enum ResourceAction {Create=-1, Stop = 0, Start = 1 };
+    public enum ResourceAction {Undefined=-1, Stop = 0, Start = 1 , Create =2};
 }

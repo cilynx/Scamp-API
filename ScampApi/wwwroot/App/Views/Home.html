@@ -1,3 +1,4 @@
 ﻿<div>
-    <button ng-click="login()">Log in to Scamp</button>
+    <button ng-hide="isLoggedOn" ng-click="login()">Log in to Scamp</button>
+    <button ng-hide="!isLoggedOn" ng-click="logout()">Log out of Scamp</button>
 </div>

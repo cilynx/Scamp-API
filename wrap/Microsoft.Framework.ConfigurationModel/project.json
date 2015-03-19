@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45": {
+      "bin": {
+        "assembly": "../../../../../Users/gabrielc/.k/packages/Microsoft.Framework.ConfigurationModel/1.0.0-beta3/lib/aspnet50/Microsoft.Framework.ConfigurationModel.dll"
+      }
+    }
+  }
+}

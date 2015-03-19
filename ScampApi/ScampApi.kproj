@@ -16,6 +16,7 @@
     <DevelopmentServerPort>10838</DevelopmentServerPort>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AzureProvisioningLibrary\AzureProvisioningLibrary.csproj" />
     <ProjectReference Include="..\DataRepository\DocDBRepository,impl\DocDBRepository,impl.csproj" />
     <ProjectReference Include="..\DataRepository\DocDBRepository.dto\DocDBRepository.dto.csproj" />
   </ItemGroup>

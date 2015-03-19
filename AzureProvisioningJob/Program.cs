@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AzureProvisioningLibrary;
 using Microsoft.Azure.WebJobs;
+using Microsoft.WindowsAzure;
 
 namespace AzureProvisioningJob
 {
@@ -15,8 +17,16 @@ namespace AzureProvisioningJob
         // TODO 
         static void Main()
         {
+           
 
-            var host = new JobHost();
+
+            var host = new JobHost(new JobHostConfiguration(ProvisioningLibraryConfiguration.GetStorageConnectionString() ));
+
+
+            AzureProvisioningLibrary.WebJobController w = new WebJobController();
+            w.SubmitActionInQueue(1, ResourceAction.Start);
+
+            
             // The following code ensures that the WebJob will be running continuously
             host.RunAndBlock();
         }

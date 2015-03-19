@@ -14,4 +14,5 @@ angular.module('scamp')
             $scope.loadingMessage = "";
         })
     };
+
 }]);
