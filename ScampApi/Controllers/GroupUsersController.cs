@@ -16,7 +16,7 @@ namespace ScampApi.Controllers
             _linkHelper = linkHelper;
         }
         [HttpGet]
-        public IEnumerable<UserSummary> Get(int groupId)
+        public IEnumerable<UserSummary> Get(string groupId)
         {
             return new[]
                 {
@@ -30,7 +30,7 @@ namespace ScampApi.Controllers
         }
 
         [HttpGet("{userId}", Name="GroupUsers.GetSingle")]
-        public UserSummary Get(int groupId, int userId)
+        public UserSummary Get(string groupId, int userId)
         {
             return new UserSummary
             {
@@ -45,14 +45,14 @@ namespace ScampApi.Controllers
         }
 
         [HttpPost]
-        public void Post(int groupId, [FromBody]int userId)
+        public void Post(string groupId, [FromBody]int userId)
         {
             // TODO implement adding a user to a group
             throw new NotImplementedException();
         }
 
         [HttpDelete("{userId}")]
-        public void Delete(int groupId, int userId)
+        public void Delete(string groupId, int userId)
         {
             // TODO implement removing a user from a group
             throw new NotImplementedException();

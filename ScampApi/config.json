@@ -1,4 +1,8 @@
 ﻿{
     "ApiRootUrl": "https://localhost:44300",
-    "AadInstance": "https://login.windows.net/{0}"
+    "AadInstance": "https://login.windows.net/{0}",
+    "DocDb": {
+        "endpoint" : "<override in env vars>",  
+        "authkey" : "<override in env vars>"  
+    }
 }

@@ -16,7 +16,7 @@ namespace ScampApi.Controllers
             _linkHelper = linkHelper;
         }
         [HttpGet]
-        public IEnumerable<GroupResourceSummary> GetAll(int groupId)
+        public IEnumerable<GroupResourceSummary> GetAll(string groupId)
         {
             return new[] {
                 new GroupResourceSummary { GroupId = groupId, ResourceId = 1, Name = "GroupResource1" },
@@ -25,7 +25,7 @@ namespace ScampApi.Controllers
         }
 
         [HttpGet("{resourceId}", Name ="GroupResources.GetSingle")]
-        public GroupResource Get(int groupId, int resourceId)
+        public GroupResource Get(string groupId, int resourceId)
         {
             return new GroupResource
             {

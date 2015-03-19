@@ -48,8 +48,8 @@ namespace ScampApi.Controllers.Controllers
             {
                 Id = 1,
                 Name = "User1",
-                Groups = new[] { new GroupSummary { GroupId = 1, Name = "Group1", Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: 1) } } } },
-                Resources = new[] { new GroupResourceSummary { GroupId = 1, ResourceId = 1, Name = "GroupResource1", Links = { new Link { Rel = "groupResource", Href = _linkHelper.GroupResource(groupId: 1, resourceId: 1) } } } }
+                Groups = new[] { new GroupSummary { GroupId = "Id1", Name = "Group1", Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: "Id1") } } } },
+                Resources = new[] { new GroupResourceSummary { GroupId = "Id1", ResourceId = 1, Name = "GroupResource1", Links = { new Link { Rel = "groupResource", Href = _linkHelper.GroupResource(groupId: "Id1", resourceId: 1) } } } }
             };
         }
 

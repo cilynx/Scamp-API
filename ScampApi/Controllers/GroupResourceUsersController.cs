@@ -17,7 +17,7 @@ namespace ScampApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<UserSummary> GetAll(int groupId, int resourceId)
+        public IEnumerable<UserSummary> GetAll(string groupId, int resourceId)
         {
             return new[]
                 {
@@ -30,7 +30,7 @@ namespace ScampApi.Controllers
                 };
         }
         [HttpGet("{userId}", Name = "GroupResourceUsers.GetSingle")]
-        public UserSummary Get(int groupId, int resourceId, int userId)
+        public UserSummary Get(string groupId, int resourceId, int userId)
         {
             return new UserSummary
             {
@@ -45,14 +45,14 @@ namespace ScampApi.Controllers
         }
 
         [HttpPost]
-        public void Post(int groupId, int resourceId, [FromBody]int userId)
+        public void Post(string groupId, int resourceId, [FromBody]int userId)
         {
             // TODO implement adding a user to a group resource
             throw new NotImplementedException();
         }
 
         [HttpDelete("{userId}")]
-        public void Delete(int groupId, int resourceId, int userId)
+        public void Delete(string groupId, int resourceId, int userId)
         {
             // TODO implement removing a user from a group resource
             throw new NotImplementedException();

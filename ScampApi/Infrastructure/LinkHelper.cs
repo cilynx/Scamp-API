@@ -20,24 +20,24 @@ namespace ScampApi.Infrastructure
             return FullyQualify(_urlHelper.RouteUrl("Groups.GetAll"));
         }
         
-        public string Group(int groupId)
+        public string Group(string groupId)
         {
             return FullyQualify(_urlHelper.RouteUrl("Groups.GetSingle", new { groupId }));
         }
 
-        public string GroupResource(int groupId, int resourceId)
+        public string GroupResource(string groupId, int resourceId)
         {
             return FullyQualify(_urlHelper.RouteUrl("GroupResources.GetSingle", new { groupId, resourceId }));
         }
-        public string GroupTemplate(int groupId, int templateId)
+        public string GroupTemplate(string groupId, int templateId)
         {
             return FullyQualify(_urlHelper.RouteUrl("GroupTemplates.GetSingle", new { groupId, templateId }));
         }
-        public string GroupUser(int groupId, int userId)
+        public string GroupUser(string groupId, int userId)
         {
             return FullyQualify(_urlHelper.RouteUrl("GroupUsers.GetSingle", new { groupId , userId }));
         }
-        public string GroupResourceUser(int groupId, int resourceId, int userId)
+        public string GroupResourceUser(string groupId, int resourceId, int userId)
         {
             return FullyQualify(_urlHelper.RouteUrl("GroupResourceUsers.GetSingle", new { groupId, resourceId , userId }));
         }

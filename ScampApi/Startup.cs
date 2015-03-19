@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using DocumentDbRepositories.Implementation;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
@@ -10,6 +11,8 @@ using Microsoft.Framework.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using ScampApi.Infrastructure;
 using Microsoft.AspNet.StaticFiles;
+
+
 
 namespace ScampApi
 {
@@ -43,6 +46,8 @@ namespace ScampApi
             services.AddTransient<ILinkHelper, LinkHelper>();
 
             services.AddInstance(Configuration);
+
+            services.AddTransient<RepositoryFactory>();
         }
 
         // Configure is called after ConfigureServices is called.

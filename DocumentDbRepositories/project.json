@@ -1,0 +1,15 @@
+﻿{
+    "version": "1.0.0-*",
+    "dependencies": {
+    },
+
+    "frameworks": {
+        "aspnet50": {
+            "dependencies": {
+                "Microsoft.Framework.ConfigurationModel": "1.0.0-beta3",
+                "Microsoft.Azure.Documents.Client": "0.9.2-preview",
+                "Newtonsoft.Json": "4.5.11"
+            }
+        }
+    }
+}

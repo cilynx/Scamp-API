@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45": {
+      "wrappedProject": "../../DocDBRepository.dto/DocDBRepository.dto.csproj",
+      "bin": {
+        "assembly": "../../DocDBRepository.dto/obj/{configuration}/DocDBRepository.dto.dll",
+        "pdb": "../../DocDBRepository.dto/obj/{configuration}/DocDBRepository.dto.pdb"
+      },
+      "dependencies": {
+        "Newtonsoft.Json": "4.5.11"
+      }
+    }
+  }
+}

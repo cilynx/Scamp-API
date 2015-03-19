@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using DocumentDbRepositories;
+using DocumentDbRepositories.Implementation;
 using Microsoft.AspNet.Mvc;
 using ScampApi.Infrastructure;
 using ScampApi.ViewModels;
@@ -11,22 +14,32 @@ namespace ScampApi.Controllers
     public class GroupsController : Controller
     {
         private ILinkHelper _linkHelper;
+        private RepositoryFactory _repositoryFacgtory;
 
-        public GroupsController(ILinkHelper linkHelper)
+        public GroupsController(ILinkHelper linkHelper, RepositoryFactory repositoryFactory)
         {
             _linkHelper = linkHelper;
+            _repositoryFacgtory = repositoryFactory; // TODO - revisit this. would be nice to inject repository here
         }
         [HttpGet(Name = "Groups.GetAll")]
-        public IEnumerable<GroupSummary> Get()
+        public async Task<IEnumerable<GroupSummary>> Get()
         {
-            return new[] {
-                new GroupSummary { GroupId = 1, Name = "Group1", Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: 1) } } },
-                new GroupSummary { GroupId = 2, Name = "Group2", Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: 2) } } },
-                };
+            var repository = await _repositoryFacgtory.GetGroupRepositoryAsync();
+            var groups = await repository.GetGroups();
+            return groups.Select(MapToSummary);
+        }
+        private GroupSummary MapToSummary(ScampResourceGroup docDbGroup)
+        {
+            return new GroupSummary
+            {
+                GroupId = docDbGroup.Id,
+                Name = docDbGroup.Name,
+                Links = { new Link { Rel = "group", Href = _linkHelper.Group(groupId: docDbGroup.Id) } }
+            };
         }
 
         [HttpGet("{groupId}", Name = "Groups.GetSingle")]
-        public Group Get(int groupId)
+        public Group Get(string groupId)
         {
             return new Group
             {

@@ -9,7 +9,7 @@ namespace ScampApi.Controllers
     public class GroupTemplatesController : Controller
     {
         [HttpGet]
-        public IEnumerable<GroupTemplateSummary> Get(int groupId)
+        public IEnumerable<GroupTemplateSummary> Get(string groupId)
         {
             return new[] {
                 new GroupTemplateSummary { GroupId = groupId, TemplateId = 1, Name = "GroupTemplate1" },
@@ -18,7 +18,7 @@ namespace ScampApi.Controllers
         }
 
         [HttpGet("{templateId}", Name = "GroupTemplates.GetSingle")]
-        public GroupTemplate Get(int groupId, int templateId)
+        public GroupTemplate Get(string groupId, int templateId)
         {
             return new GroupTemplate { GroupId = groupId, TemplateId = templateId, Name = "GroupTemplate" + templateId };
         }
@@ -31,14 +31,14 @@ namespace ScampApi.Controllers
         }
 
         [HttpPut("{templateId}")]
-        public void Put(int groupId, int templateId, [FromBody]GroupTemplate value)
+        public void Put(string groupId, int templateId, [FromBody]GroupTemplate value)
         {
             // TODO implement updating a group template
             throw new NotImplementedException();
         }
 
         [HttpDelete("{templateId}")]
-        public void Delete(int groupId, int templateId)
+        public void Delete(string groupId, int templateId)
         {
             // TODO implement removing a template from a group
             throw new NotImplementedException();
