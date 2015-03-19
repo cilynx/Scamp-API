@@ -13,14 +13,16 @@ namespace AzureProvisioningLibrary
 {
     public class WebJobController
     {
-        public WebJobController()
+        IDictionary<string, string> _settings;
+
+        public WebJobController(IDictionary<string, string> settings)
         {
-                
+            _settings = settings;   
         }
 
         public Guid SubmitActionInQueue(int resourceId, AzureProvisioningLibrary.ResourceAction  action)
         {
-            var storageConnectionString = ProvisioningLibraryConfiguration.GetStorageConnectionString();
+            var storageConnectionString = _settings["StorageConnectionString"];
             var storageAccount = CloudStorageAccount.Parse(storageConnectionString); 
 
 
