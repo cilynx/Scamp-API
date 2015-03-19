@@ -8,7 +8,7 @@ angular.module('scamp', ['ngRoute','AdalAngular'])
     }).when("/dashboard", {
         controller: "dashboardCtrl",
         templateUrl: "/App/Views/Dashboard.html",
-        requireADLogin: true,
+        //requireADLogin: true,
     }).when("/resources", {
         controller: "resourcesCtrl",
         templateUrl: "/App/Views/Resources.html",

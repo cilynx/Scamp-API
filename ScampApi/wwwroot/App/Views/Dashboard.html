@@ -1,0 +1,29 @@
+<div id="dashboard" ng-init="populate()">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="widget">
+                <div class="widget-header">
+                    <i class="fa fa-tasks"></i> Users <span class="pull-right">Manage</span>
+                </div>
+                <div class="widget-body no-padding">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="item in userList">
+                                    <td class="text-center">{{item.id}}</td>
+                                    <td>{{item.name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

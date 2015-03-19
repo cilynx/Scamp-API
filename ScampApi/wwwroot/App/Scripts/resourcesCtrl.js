@@ -1,6 +1,6 @@
 ﻿'use strict';
 angular.module('scamp')
-.controller('resourcesCtrl', ['$scope', '$location', 'resourcesSvc', 'adalAuthenticationService', function ($scope, $location, resourcesSvc, adalService) {
+.controller('resourcesCtrl', ['$scope', '$location', 'resourcesSvc', 'adalAuthenticationService','$sce', function ($scope, $location, resourcesSvc, adalService,$sce) {
     $scope.error = "";
     $scope.loadingMessage = "Loading...";
     $scope.resourceList = null;
@@ -45,17 +45,20 @@ angular.module('scamp')
         }
     };
 
+
+
     $scope.populate = function () {
-        resourceListSvc.getItems().success(function (results) {
+        resourcesSvc.getItems().then(function (results) {
             $scope.resourceList = results;
             $scope.loadingMessage = "";
-        }).error(function (err) {
+        },
+        function (err) {
             $scope.error = err;
             $scope.loadingMessage = "";
         })
     };
     $scope.delete = function (id) {
-        resourceListSvc.deleteItem(id).success(function (results) {
+        resourcesSvc.deleteItem(id).success(function (results) {
             $scope.loadingMessage = "";
             $scope.populate();
         }).error(function (err) {
@@ -64,7 +67,7 @@ angular.module('scamp')
         })
     };
     $scope.update = function (resource) {
-        resourceListSvc.putItem($scope.editInProgressresource).success(function (results) {
+        resourcesSvc.putItem($scope.editInProgressresource).success(function (results) {
             $scope.loadingMsg = "";
             $scope.populate();
             $scope.editSwitch(resource);
@@ -75,7 +78,7 @@ angular.module('scamp')
     };
     $scope.add = function () {
 
-        resourceListSvc.postItem({
+        resourcesSvc.postItem({
             'Description': $scope.newresourceCaption,
             'Owner': adalService.userInfo.userName
         }).success(function (results) {

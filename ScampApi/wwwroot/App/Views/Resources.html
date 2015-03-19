@@ -1,12 +1,10 @@
 ﻿<div ng-init="populate()">
     <p class="error">{{error}}</p>
     <p>{{loadingMessage}}</p>
+  
     <div class="row">
         <div class="col-lg-8">
-
-
             <div class="widget">
-                <p>This table shows on the User detail view as well as the Group detail view</p>
                 <div class="widget-header">
                     <i class="fa fa-tasks"></i> Resources <span class="pull-right">Manage</span>
                 </div>
@@ -24,8 +22,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <tr data-ng-repeat="item in resources"> -->
-                                <tr>
+                                <tr data-ng-repeat="item in resourceList">
                                     <td class="text-center">{{item.id}}</td>
                                     <td>
                                         <div class="btn-group">
@@ -42,10 +39,10 @@
                                     </td>
                                     <td>{{item.name}}</td>
                                     <td>{{item.state}}</td>
-                                    <td>{{item.group.name}}</td>
+                                    <td>{{item.groupName}}</td>
                                     <td class="resource">
                                         <div class="progress">
-                                            <div class="progress-bar" role="progressbar" ng-attr-style="{{resource.remainingBarStyle}}" ng-attr-aria-valuenow="{{resource.remaining}}" aria-valuemin="0" aria-valuemax="1">
+                                            <div class="progress-bar" role="progressbar" ng-style="{width: item.remaining * 100}"  >
                                             </div>
                                         </div>
                                     </td>
@@ -55,166 +52,8 @@
                     </div>
                 </div>
             </div>
-
-
-            <p />
-            <div class="widget">
-                <p>This table shows on the Group detail view</p>
-                <div class="widget-header">
-                    <i class="fa fa-tasks"></i> Group Members
-                </div>
-                <div class="widget-body no-padding">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID <i class="fa fa-caret-down"></i></th>
-                                    <th>Name</th>
-                                    <th>Usage</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- <tr data-ng-repeat="user in members"> -->
-                                <tr>
-                                    <!-- Angular may have better sugar for this? -->
-                                    <td><a href="#/users/{{user.id}}">{{user.email}}</a></td>
-                                    <td>{{user.name}}</td>
-                                    <td class="resource">
-                                        <div class="progress">
-                                            <!-- progressBarType would be 'progress-bar-warning' for say 90% utilization, 'progress-bar-danger' for 100% utilization and '' for anything else -->
-                                            <div class="progress-bar {{resource.progressBarType}}" role="progressbar" ng-attr-style="{{resource.remainingBarStyle}}" ng-attr-aria-valuenow="{{resource.remaining}}" aria-valuemin="0" aria-valuemax="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#/users/{{user.id}}">david@zbrad.com</a></td>
-                                    <td>David Makogon</td>
-                                    <td class="resource">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 50%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#/users/{{user.id}}">shawn@zbrad.com</a></td>
-                                    <td>Shawn Cicoria</td>
-                                    <td class="resource">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 100%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#/users/{{user.id}}">felix@zbrad.com</a></td>
-                                    <td>Felix Rieseberg</td>
-                                    <td class="resource">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-warning" role="progressbar" style="width: 95%">
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- I don't know anything about Angular, so this could be totally wrong... -->
-                                    <td><input type="text" class="form-control" ng-model="newGroupMemberId"></td>
-                                    <td><button type="button" class="btn btn-default">Add from Directory</button></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <p />
-            <div class="widget">
-                <p>This table shows on the Group detail view</p>
-                <div class="widget-header">
-                    <i class="fa fa-tasks"></i> Group Templates
-                    <span class="pull-right">
-                        <div class="btn-group">
-                            <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" ref="#">
-                                Manage <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Add Template</a></li>
-                                <li><a href="#">Other stuff here?</a></li>
-                            </ul>
-                        </div>
-                    </span>
-                </div>
-                <div class="widget-body no-padding">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name <i class="fa fa-caret-down"></i></th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- <tr data-ng-repeat="template in templates"> -->
-                                <tr>
-                                    <td><a href="#/templates/{{template.id}}">{{template.name}}</a></td>
-                                    <td>{{template.description}}</td>                                  
-                                </tr>
-                                <tr>
-                                    <td><a href="#">PhET with LLNL</a></td>
-                                    <td>This template includes an Azure Website running the PhET simulation frontend and two G-Series workers pre-configured to support PhET using CRY, RadSrc, or Fission from LLNL.</td>
-                                </tr>                             
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <p />
-            <div class="widget">
-                <p>This table shows on the Group Administrator view</p>
-                <div class="widget-header">
-                    <i class="fa fa-tasks"></i> Groups
-                </div>
-                <div class="widget-body no-padding">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name <i class="fa fa-caret-down"></i></th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- <tr data-ng-repeat="group in groups"> -->
-                                <tr>
-                                    <td><a href="#/groups/{{group.id}}">{{group.name}}</a></td>
-                                    <td>{{group.description}}</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">Physics 101-001</a></td>
-                                    <td>Physics 101 -- Lecture 8-9 MWF, Lab 8-12 TR</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">Physics 101-002</a></td>
-                                    <td>Physics 101 -- Lecture 12-1 MWF, Lab 12-4 TR</td>
-                                </tr>
-                                <tr>
-                                    <!-- I don't know anything about Angular, so this could be totally wrong... -->
-                                    <td><input type="text" class="form-control" ng-model="newTemplateName"></td>
-                                    <td><input type="text" class="form-control" ng-model="newTemplateDesc"></td>
-                                    <td><button type="button" class="btn btn-default">Add</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-
+        <br />
         <div class="col-lg-4">
             <div class="widget">
                 <div class="widget-header">
@@ -231,26 +70,33 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon">Status</span>
-                            {{input type="text" class="form-control" placeholder="Recource's Status" value=rState}}
+                            <span class="input-group-addon" data-ng-hide="item.edit">{{item.Status}}</span>
+                            <input data-ng-show="item.edit" class="form-control" type="text" data-ng-model="editInProgressResource.Status" />
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon">Group</span>
-                            {{
-                            view "select"
-                            class="form-control"
-                            content=groupsLookup
-                            selection=rGroup
-                            optionValuePath="content.id"
-                            optionLabelPath="content.name"
-                            prompt="Choose a Group"
-                            }}
+                            <select ng-init="groupDropDown = groups[0]" id='group-dropdown' ng-model="groupDropDown" ng-options="group as group.name for group in groups"
+                                    ng-change="onchangeGroup(groupDropDown)"></select>
+
+                            <select ng-model="choice" ng-options="x.id as x.name for x in array"></select>
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon">Remaining</span>
-                            {{input type="number" min="0" max="1" step="0.1" class="form-control" placeholder="Recource's Remaining Usage (0-1)" value=rRemaining}}
+                            <span class="input-group-addon" data-ng-hide="item.edit">{{item.Remaining}}</span>
+                            <input data-ng-show="item.edit" class="form-control" type="number" data-ng-model="editInProgressResource.Remaining" />
+
                         </div>
                         <div class="input-group">
-                            <button type="submit" {{action "addResource"}} type="button" class="btn btn-primary" id="addResource">Add Resource</button>
+                            <p data-ng-hide="item.edit || editingInProgress">
+                                <a data-ng-click="editSwitch(item)" href="javascript:;">Edit</a> |
+                                <a data-ng-click="delete(item.ID)" href="javascript:;">Delete</a>
+                            </p>
+                            <p data-ng-show="item.edit">
+                                <a data-ng-click="update(item)" href="javascript:;">Save</a> |
+                                <a data-ng-click="editSwitch(item)" href="javascript:;">Cancel</a>
+                            </p>    
+
+                        
                         </div>
                     </form>
                 </div>

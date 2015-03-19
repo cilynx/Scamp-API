@@ -1,15 +1,3 @@
-[data-ember-action] {
-	cursor: pointer;
-}
-ul.breadcrumbs {
-	list-style: none; padding-left: 0px;
-}
-.breadcrumbs li::after {
-	content: "/";
-}
-.breadcrumbs li:last-child::after {
-	content: "";
-}
 .padding {
 	padding: 10px;
 }
@@ -36,4 +24,8 @@ table .progress {
 }
 .visible {
 	display: block; visibility: visible; opacity: 1;
+}
+
+.page-content {
+    padding: 10px;
 }
