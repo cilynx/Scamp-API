@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Framework.ConfigurationModel">
-      <HintPath>..\..\..\..\Users\gabrielc\.k\packages\Microsoft.Framework.ConfigurationModel\1.0.0-beta3\lib\aspnet50\Microsoft.Framework.ConfigurationModel.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>

@@ -16,6 +16,7 @@
         "aspnet50": {
             "dependencies": {
                 "AzureProvisioningLibrary": "1.0.0-*"
+
             }
         }
     },

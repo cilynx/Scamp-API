@@ -25,7 +25,6 @@
         "Microsoft.WindowsAzure.Management.Storage": "3.0.0",
         "Microsoft.WindowsAzure.Management.WebSites": "3.0.0",
         "Newtonsoft.Json": "6.0.4",
-        "Microsoft.Framework.ConfigurationModel": "1.0.0-*",
         "Microsoft.WindowsAzure.Configuration": "1.0.0-*",
         "Microsoft.WindowsAzure.Storage": "1.0.0-*"
       }
