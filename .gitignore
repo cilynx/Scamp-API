@@ -197,3 +197,4 @@ ModelManifest.xml
 debugSettings.json
 /EnvVars.ps1
 wrap/
+DocumentDbRepo46/private.config

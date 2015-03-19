@@ -5,11 +5,10 @@ VisualStudioVersion = 14.0.22609.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ScampApi", "ScampApi\ScampApi.kproj", "{49C949D4-8A1F-4FAB-9484-B0F50C5776DB}"
 EndProject
-<<<<<<< HEAD
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataTier", "DataTier", "{FD068F2A-2241-4948-A1F7-C756BC85DFAF}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DocumentDbRepositories", "DocumentDbRepositories\DocumentDbRepositories.kproj", "{0C8E6A9D-D14F-4A5B-9228-09F826D74604}"
-=======
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureProvisioningLibrary", "AzureProvisioningLibrary\AzureProvisioningLibrary.csproj", "{0B50A9D4-FEF4-4514-A722-EBF272CCECEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{63EC0B60-3D54-4B7D-8BEE-FD226D655CD0}"
@@ -18,7 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{63EC0B
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureProvisioningJob", "AzureProvisioningJob\AzureProvisioningJob.csproj", "{1074CC3F-F227-4B44-B95C-AE79D0F8445A}"
->>>>>>> 519015bfc1f1ea7bcdf6b34ba7bd296e23be4e84
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentDbRepo46", "DocumentDbRepo46\DocumentDbRepo46.csproj", "{ADB3860C-4104-4AB5-BFE7-6C32BBF4657F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,12 +30,10 @@ Global
 		{49C949D4-8A1F-4FAB-9484-B0F50C5776DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C949D4-8A1F-4FAB-9484-B0F50C5776DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49C949D4-8A1F-4FAB-9484-B0F50C5776DB}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
 		{0C8E6A9D-D14F-4A5B-9228-09F826D74604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C8E6A9D-D14F-4A5B-9228-09F826D74604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C8E6A9D-D14F-4A5B-9228-09F826D74604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C8E6A9D-D14F-4A5B-9228-09F826D74604}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{0B50A9D4-FEF4-4514-A722-EBF272CCECEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B50A9D4-FEF4-4514-A722-EBF272CCECEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B50A9D4-FEF4-4514-A722-EBF272CCECEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,12 +42,16 @@ Global
 		{1074CC3F-F227-4B44-B95C-AE79D0F8445A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1074CC3F-F227-4B44-B95C-AE79D0F8445A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1074CC3F-F227-4B44-B95C-AE79D0F8445A}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> 519015bfc1f1ea7bcdf6b34ba7bd296e23be4e84
+		{ADB3860C-4104-4AB5-BFE7-6C32BBF4657F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB3860C-4104-4AB5-BFE7-6C32BBF4657F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB3860C-4104-4AB5-BFE7-6C32BBF4657F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB3860C-4104-4AB5-BFE7-6C32BBF4657F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0C8E6A9D-D14F-4A5B-9228-09F826D74604} = {FD068F2A-2241-4948-A1F7-C756BC85DFAF}
+		{ADB3860C-4104-4AB5-BFE7-6C32BBF4657F} = {FD068F2A-2241-4948-A1F7-C756BC85DFAF}
 	EndGlobalSection
 EndGlobal
